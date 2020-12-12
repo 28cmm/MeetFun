@@ -17,12 +17,13 @@ struct LoginView: View {
         NavigationView{
             ScrollView{
                 //body
-                VStack(spacing:10){
+                VStack{
                     HStack{
                         Spacer()
-                        Image("chinesGirl")
+                        Image("m1")
                             .normalImage()
-                            .frame(width:HEIGHTSPACE*4, height:HEIGHTSPACE*4)
+                            .foregroundColor(Color(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)))
+                            .frame(width:HEIGHTSPACE*8, height:HEIGHTSPACE*8)
                         Spacer()
                     }.padding()
                     VStack{
@@ -53,7 +54,6 @@ struct LoginView: View {
                     //.padding(.horizontal,WIDTHSPACE*2)
                     .normalText()
                     
-                    Spacer()
                     
                     Button("Sign Up"){
                         if registerVM.passwordz.isEmpty == false && registerVM.emailz.isEmpty == false && registerVM.name.isEmpty == false{
@@ -110,14 +110,17 @@ struct LoginView: View {
                     .background(Color(#colorLiteral(red: 0.3513801396, green: 0.7654538751, blue: 0.1472723484, alpha: 1)))
                 .cornerRadius(6)
                     .normalShadow()
+                    
+                    Spacer()
                     NavigationLink(
                         destination: NavigationLazyView(TabBarView()),
                         isActive: self.$pushActive
                     ){EmptyView()}
-                }.padding()
+                }.padding(.horizontal)
             }
             .background(Color.white)
             .navigationTitle("")
+            .navigationBarHidden(true)
         }
         
         

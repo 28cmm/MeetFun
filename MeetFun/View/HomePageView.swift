@@ -24,9 +24,11 @@ struct HomePageView: View {
             let events = vm.events
             //top selection
             HStack{
-                Text("there is # \(vm.events.count) event")
-                    .padding()
                 Spacer()
+                Image("m1")
+                    .normalImage()
+                    .foregroundColor(Color(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)))
+                    .frame(width:HEIGHTSPACE*4, height:HEIGHTSPACE*4)
                 Button("Refresh"){
                     hudCoordinator.showHUD {
                         let hud = JGProgressHUD()

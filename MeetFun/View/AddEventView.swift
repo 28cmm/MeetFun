@@ -57,7 +57,7 @@ struct AddEventView: View {
                         .colorInvert()
                         .colorMultiply(Color.discoverBackground)
                         
-                        .padding()
+                        .frame(width:WIDTHSPACE*5)
                            // .background(Color.discoverBackground)
                         .foregroundColor(Color.white)
                             .cornerRadius(5)
@@ -73,7 +73,7 @@ struct AddEventView: View {
                     TextField("description", text: $addEventVM.description)
                         .padding()
                         .background(Color.discoverBackground)
-                        .frame(width:WIDTHSPACE*5,height:HEIGHTSPACE10*4)
+                        .frame(width:WIDTHSPACE*5)
                         .cornerRadius(5)
                     
                 }.normalText()
@@ -83,15 +83,25 @@ struct AddEventView: View {
             Spacer(minLength: 0)
             //event
             Button("Create Event"){
-                hudCoordinator.showHUD {
-                    let hud = JGProgressHUD()
-                    hud.textLabel.text = "Creating.."
-                    hud.dismiss(afterDelay: 1)
-                    return hud
+                if addEventVM.tittle.isEmpty == false && addEventVM.location.isEmpty == false && addEventVM.description.isEmpty == false{
+                    hudCoordinator.showHUD {
+                        let hud = JGProgressHUD()
+                        hud.textLabel.text = "Creating.."
+                        hud.dismiss(afterDelay: 1)
+                        return hud
+                    }
+                    addEventVM.addEvent {
+                        
+                    }
+                }else{
+                    hudCoordinator.showHUD {
+                        let hud = JGProgressHUD()
+                        hud.textLabel.text = "Please fill out everything"
+                        hud.dismiss(afterDelay: 1)
+                        return hud
+                    }
                 }
-                addEventVM.addEvent {
-                    
-                }
+                
             }
             .font(.system(size: 15, weight: .bold))
             .frame(width:WIDTHSPACE*3)
