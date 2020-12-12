@@ -16,6 +16,7 @@ pod install
 * Fully SwiftUI
 * Firebase (database)
 * Firebase authentication (login)
+* Instant refresh chat view
 * use MVVM structure 
 * custoum tab bar view
 * UIViewRepresentable
